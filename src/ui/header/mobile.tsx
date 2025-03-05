@@ -5,6 +5,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MobileNavBar from "./_mobile_nav";
+import MobileCities from "./_mobile_cities";
 
 const MobileView: React.FC = () => {
   return (
@@ -14,7 +15,7 @@ const MobileView: React.FC = () => {
           <div className="">
             <input type="checkbox" id="menu-toggle" className="hidden peer" />
             <label htmlFor="menu-toggle" className="cursor-pointer">
-              <FontAwesomeIcon icon={faBars} className="w-6" />
+              <FontAwesomeIcon icon={faBars} className="w-6 text-3xl pt-1" />
             </label>
 
             <div className="fixed inset-0 hidden peer-checked:block z-10">
@@ -32,14 +33,9 @@ const MobileView: React.FC = () => {
         </div>
 
         <div className="flex gap-2">
+          <MobileCities />
           <button
-            className="bg-main-darker flex p-2 rounded-full focus:outline-none"
-            aria-label="Search"
-          >
-            <FontAwesomeIcon icon={faSearch} className="w-6" />
-          </button>
-          <button
-            className="bg-main-darker flex p-2 rounded-full focus:outline-none"
+            className="bg-main-darker flex p-2 h-10 items-center rounded-full focus:outline-none"
             aria-label="Add User"
           >
             <FontAwesomeIcon icon={faUserPlus} className="w-6" />

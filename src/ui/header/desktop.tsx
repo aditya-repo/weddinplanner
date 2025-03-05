@@ -2,24 +2,22 @@ import {
   faCaretDown,
   faCloudDownload,
   faFileText,
-  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Navbar from "./_desktop_nav";
+import DesktopCities from "./_desktop_cities";
+import SearchVendor from "./search_vendor";
 
 const DesktopView: React.FC = () => {
   return (
-    <div>
+    <div className="relative">
       {/* Header */}
       <div className="w-full flex items-center bg-main-darker justify-between py-1.5 px-10">
         <div className="flex items-center gap-8">
           <p className="text-sm text-white">
             India's Favourite Wedding Planning Platform
           </p>
-          <div className="py-1.5 px-4 flex justify-between items-center bg-white gap-10 rounded-xs">
-            <div className="text-xs text-light">All Cities</div>
-            <FontAwesomeIcon icon={faCaretDown} className="h-4" />
-          </div>
+          <DesktopCities />
         </div>
         <div className="flex gap-4">
           <div className="flex text-white items-center gap-2 text-sm">
@@ -37,14 +35,12 @@ const DesktopView: React.FC = () => {
       {/* Navbar start */}
       <div className="w-full bg-main-dark flex justify-between px-10 gap-x-12 text-white h-[58px]">
         <div className="flex gap-10 relative">
-          <div className="text-3xl py-1.5">Wedding Planner</div>
+          <div className="text-lg md:text-3xl py-1.5 pt-2">Wedding Planner</div>
           <Navbar />
         </div>
         <div className="flex items-center gap-8">
-          <div className="bg-main-darker flex p-2 rounded-full ">
-            <FontAwesomeIcon icon={faSearch} className="w-4 h-4" />
-          </div>
-          <div className="bg-main-darker flex py-1 rounded-full px-10">
+          <SearchVendor />
+          <div className="bg-main-darker flex py-1 rounded-full md:px-10">
             Login
           </div>
         </div>
@@ -54,4 +50,22 @@ const DesktopView: React.FC = () => {
   );
 };
 
+const Cities: React.FC = () => {
+  return (
+    <div className="w-full flex items-center bg-main-darker justify-between py-1.5 px-10">
+      <div className="flex items-center gap-8">
+        <p className="text-sm text-white">All Cities</p>
+        <div className="py-1.5 px-4 flex justify-between items-center bg-white gap-10 rounded-xs">
+          <div className="text-xs text-light">All Cities</div>
+          <FontAwesomeIcon icon={faCaretDown} className="h-4" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
 export default DesktopView;
+
+
+
