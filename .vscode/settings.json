@@ -12,7 +12,7 @@
         "eslint.config.mjs": true,
         "package-lock.json": true,
         "README.md": true,
-        "postcss.config.mjs": true,
+        // "postcss.config.mjs": true,
         "next-env.d.ts": true,
         "next.config.ts": true,
         "tsconfig.json": true
