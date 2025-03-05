@@ -15,7 +15,7 @@ const DesktopView: React.FC = () => {
       <div className="w-full flex items-center bg-main-darker justify-between py-1.5 px-10">
         <div className="flex items-center gap-8">
           <p className="text-sm text-white">
-            India's Favourite Wedding Planning Platform
+            India&apos;s Favourite Wedding Planning Platform
           </p>
           <DesktopCities />
         </div>
@@ -49,20 +49,6 @@ const DesktopView: React.FC = () => {
     </div>
   );
 };
-
-const Cities: React.FC = () => {
-  return (
-    <div className="w-full flex items-center bg-main-darker justify-between py-1.5 px-10">
-      <div className="flex items-center gap-8">
-        <p className="text-sm text-white">All Cities</p>
-        <div className="py-1.5 px-4 flex justify-between items-center bg-white gap-10 rounded-xs">
-          <div className="text-xs text-light">All Cities</div>
-          <FontAwesomeIcon icon={faCaretDown} className="h-4" />
-        </div>
-      </div>
-    </div>
-  );
-}
 
 
 export default DesktopView;

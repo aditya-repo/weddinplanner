@@ -1,6 +1,5 @@
 import {
   faBars,
-  faSearch,
   faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -23,7 +22,7 @@ const MobileView: React.FC = () => {
                 htmlFor="menu-toggle"
                 className="absolute inset-0 w-full h-full cursor-pointer"
               ></label>
-              <div className="w-88 absolute bg-white h-full fixed left-0 top-0 z-20 shadow-lg">
+              <div className="w-88 bg-white h-full fixed left-0 top-0 z-20 shadow-lg">
                 <MobileNavBar />
               </div>
             </div>

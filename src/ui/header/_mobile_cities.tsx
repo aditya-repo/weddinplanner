@@ -1,12 +1,12 @@
 "use client"
 
-import { faCaretDown, faClose, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faClose, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useState } from "react";
 
 const MobileCities: React.FC = () => {
-    const [active, setActive] = useState<Boolean>(false);
+    const [active, setActive] = useState<boolean>(false);
     const cities = ["All Cities","Patna", "Ranchi", "Delhi NCR", "Mumbai", "Chennai", "Pune", "Lucknow", "Jaipur", "Kolkata", "Bangalore", "Hyderabad"];
     const popularcities =  ["Gurgaon", "Goa", "Udaipur", "Chandigarh", "Jim Corbett", "Ahmedabad", "Indore", "Agra", "Kanpur", "Kochi"];
 

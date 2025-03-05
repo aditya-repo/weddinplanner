@@ -1,6 +1,6 @@
 "use client";
 
-import { faAngleDown, faAppleWhole, faCartArrowDown, faClose, faGear, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown,  faClose, faGear, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useState } from "react";

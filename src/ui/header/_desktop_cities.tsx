@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 const DesktopCities: React.FC = () => {
-    const [showOverlay, setShowOverlay] = useState<Boolean>(false);
+    const [showOverlay, setShowOverlay] = useState<boolean>(false);
     const cities = ["All Cities","Patna", "Ranchi", "Delhi NCR", "Mumbai", "Chennai", "Pune", "Lucknow", "Jaipur", "Kolkata", "Bangalore", "Hyderabad"];
 
     return (
