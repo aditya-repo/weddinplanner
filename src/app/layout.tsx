@@ -2,16 +2,7 @@ import type { Metadata } from "next";
 import {  Roboto } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/ui/header/navigation";
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+import Footer from "@/ui/footer/main";
 
 const roboto = Roboto({
   weight: '400',
@@ -35,6 +26,7 @@ export default function RootLayout({
       >
         <Navigation />
         {children}
+        <Footer />
       </body>
     </html>
   );
