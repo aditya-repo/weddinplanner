@@ -1,11 +1,9 @@
-import {
-  faCloudDownload,
-  faFileText,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCloudDownload, faFileText } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Navbar from "./_desktop_nav";
 import DesktopCities from "./_desktop_cities";
 import SearchVendor from "./search_vendor";
+import Link from "next/link";
 
 const DesktopView: React.FC = () => {
   return (
@@ -34,7 +32,11 @@ const DesktopView: React.FC = () => {
       {/* Navbar start */}
       <div className="w-full bg-main-dark flex justify-between px-10 gap-x-12 text-white h-[58px]">
         <div className="flex gap-10 relative">
-          <div className="text-lg md:text-3xl py-1.5 pt-2">Wedding Planner</div>
+          <Link href={"/"}>
+            <div className="text-lg md:text-3xl py-1.5 pt-2">
+              Wedding Planner
+            </div>
+          </Link>
           <Navbar />
         </div>
         <div className="flex items-center gap-8">
@@ -49,8 +51,4 @@ const DesktopView: React.FC = () => {
   );
 };
 
-
 export default DesktopView;
-
-
-

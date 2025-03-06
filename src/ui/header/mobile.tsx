@@ -1,10 +1,8 @@
-import {
-  faBars,
-  faUserPlus,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBars, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MobileNavBar from "./_mobile_nav";
 import MobileCities from "./_mobile_cities";
+import Link from "next/link";
 
 const MobileView: React.FC = () => {
   return (
@@ -28,7 +26,9 @@ const MobileView: React.FC = () => {
             </div>
           </div>
 
-          <h2 className="text-xl py-1">Wedding Planner</h2>
+          <Link href={"/"}>
+            <h2 className="text-xl py-1">Wedding Planner</h2>
+          </Link>
         </div>
 
         <div className="flex gap-2">
