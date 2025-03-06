@@ -50,7 +50,7 @@ const Navbar = () => {
             </Link>
 
             {hoveredItem === item.name && (
-              <div className="absolute left-0 top-full">
+              <div className="absolute left-0 top-full z-100">
                 <NavbarBoard {...item.props} />
               </div>
             )}

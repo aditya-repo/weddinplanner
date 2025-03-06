@@ -3,11 +3,23 @@
 import { faCaretDown, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const cities = ["All Cities", "Patna", "Ranchi", "Delhi NCR", "Mumbai", "Chennai", "Pune", "Lucknow", "Jaipur", "Kolkata", "Bangalore", "Hyderabad"];
 
 const DesktopCities: React.FC = () => {
     const [showOverlay, setShowOverlay] = useState<boolean>(false);
-    const cities = ["All Cities","Patna", "Ranchi", "Delhi NCR", "Mumbai", "Chennai", "Pune", "Lucknow", "Jaipur", "Kolkata", "Bangalore", "Hyderabad"];
+    const [search, setSearch] = useState<string>("");
+    const [city, setCity] = useState<string[]>(cities);
+
+    useEffect(() => {
+        if (search) {
+            const filtered = cities.filter((city) => city.toLowerCase().includes(search.trim().toLowerCase()));
+            setCity(filtered);
+        } else {
+            setCity(cities);
+        }
+    }, [search]);
 
     return (
         <div className="group">
@@ -32,18 +44,19 @@ const DesktopCities: React.FC = () => {
                                     <input
                                         type="text"
                                         placeholder="Search City, State..."
-                                        className="w-[600px] h-[42px] px-2 outline-none border border-gray-200 border-l-0"
+                                        className="w-[600px] h-[42px] px-2 outline-none border text-gray-600 border-gray-200 border-l-0"
+                                        onChange={(e) => setSearch(e.target.value)}
                                     />
                                 </div>
                             </div>
 
                             <div className="grid grid-cols-5 gap-4 px-4 py-8">
-                                {cities.map((item, index) => (
-                                    <Link key={index} href={`/${item.trim().toLowerCase().replace("  "," ").replace(" ","-")}-wedding`} >
-                                    <div className="flex flex-col items-center mb-3">
-                                        <div className="w-14 h-14 bg-gray-400 rounded-full"></div>
-                                        <div className="text-xs mt-2">{item}</div>
-                                    </div>
+                                {city.map((item, index) => (
+                                    <Link key={index} href={`/${item.trim().toLowerCase().replace("  ", " ").replace(" ", "-")}-wedding`} >
+                                        <div className="flex flex-col items-center mb-3">
+                                            <div className="w-14 h-14 bg-gray-400 rounded-full"></div>
+                                            <div className="text-xs mt-2">{item}</div>
+                                        </div>
                                     </Link>
                                 ))}
                             </div>

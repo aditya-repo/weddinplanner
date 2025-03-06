@@ -3,13 +3,71 @@
 import { faClose, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const allCities = [
+    {
+        category: "Cities",
+        items: [
+            { title: "All Cities", link: "/all-cities" },
+            { title: "Patna", link: "/patna" },
+            { title: "Ranchi", link: "/ranchi" },
+            { title: "Delhi NCR", link: "/delhi-ncr" },
+            { title: "Mumbai", link: "/mumbai" },
+            { title: "Chennai", link: "/chennai" },
+            { title: "Pune", link: "/pune" },
+            { title: "Lucknow", link: "/lucknow" },
+            { title: "Jaipur", link: "/jaipur" },
+            { title: "Kolkata", link: "/kolkata" },
+            { title: "Bangalore", link: "/bangalore" },
+            { title: "Hyderabad", link: "/hyderabad" }
+        ]
+    },
+    {
+        category: "Popular Cities",
+        items: [
+            { title: "Gurgaon", link: "/gurgaon" },
+            { title: "Goa", link: "/goa" },
+            { title: "Udaipur", link: "/udaipur" },
+            { title: "Chandigarh", link: "/chandigarh" },
+            { title: "Jim Corbett", link: "/jim-corbett" },
+            { title: "Ahmedabad", link: "/ahmedabad" },
+            { title: "Indore", link: "/indore" },
+            { title: "Agra", link: "/agra" },
+            { title: "Kanpur", link: "/kanpur" },
+            { title: "Kochi", link: "/kochi" }
+        ]
+    }
+];
+
+
+interface IallCities {
+    category: string;
+    items: { title: string, link: string }[];
+}
+
 
 const MobileCities: React.FC = () => {
     const [active, setActive] = useState<boolean>(false);
-    const cities = ["All Cities","Patna", "Ranchi", "Delhi NCR", "Mumbai", "Chennai", "Pune", "Lucknow", "Jaipur", "Kolkata", "Bangalore", "Hyderabad"];
-    const popularcities =  ["Gurgaon", "Goa", "Udaipur", "Chandigarh", "Jim Corbett", "Ahmedabad", "Indore", "Agra", "Kanpur", "Kochi"];
+    const [city, setCity] = useState<IallCities[]>(allCities);
+    const [searchedKeyword, setSearchedKeyword] = useState<string>("");
 
+    useEffect(() => {
+        const search = () => {
+            if (searchedKeyword.trim().length > 0) {
+                const lowerCaseKeyword = searchedKeyword.trim().toLowerCase();
+                const filteredCity = allCities.filter((singleCity) =>
+                    singleCity.items.some((item) => item.title.toLowerCase().includes(lowerCaseKeyword))
+                );
+                setCity(filteredCity);
+            } else {
+                setCity(allCities);
+            }
+        };
+    
+        search();
+    }, [searchedKeyword, allCities]);
+    
 
     return (
         <div className="h-10">
@@ -30,25 +88,21 @@ const MobileCities: React.FC = () => {
                             </div>
                             <div className="px-5 pb-5 flex gap-0">
                                 <FontAwesomeIcon icon={faSearch} className="h-4 p-3 pl-4 text-gray-500 bg-white rounded-l-full border-none " />
-                                <input type="text" className="rounded-r-full outline-none border-none py-2 w-full bg-white border-l-0" placeholder="Search City, State..." />
+                                <input type="text" onChange={(e) => setSearchedKeyword(e.target.value)} className="rounded-r-full outline-none border-none py-2 w-full bg-white border-l-0" placeholder="Search City, State..." />
                             </div>
                         </div>
-                        <div className="p-4 border-b border-gray-300">
-                            <h4 className="text-lg font-semibold text-main-dark">Top Cities</h4>
-                            <div className="flex flex-wrap text-gray-500">
-                                {cities.map((city, index) => (
-                                    <Link key={index} href={`/${city.replace(" ", "-").toLowerCase()}`} className="py-2 text-sm basis-1/2">{city}</Link>
-                                ))}
+                        {city.map((item, index) => (
+
+                            <div className="p-4 border-b border-gray-300" key={index}>
+                                <h4 className="text-lg font-semibold text-main-dark">{item.category}</h4>
+                                <div className="flex flex-wrap text-gray-500">
+                                    {item.items.map((city, index) => (
+                                        <Link key={index} href={`/${city.link.replace(" ", "-").toLowerCase()}`} className="py-2 text-sm basis-1/2" title={city.title}>{city.title}</Link>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                        <div className="p-4 border-b border-gray-300">
-                            <h4 className="text-lg font-semibold text-main-dark">Popular Cities</h4>
-                            <div className="flex flex-wrap text-gray-500">
-                                {popularcities.map((city, index) => (
-                                    <Link key={index} href={`/${city.replace(" ", "-").toLowerCase()}`} className="py-2 text-sm basis-1/2">{city}</Link>
-                                ))}
-                            </div>
-                        </div>
+                        ))}
+
                     </div>
                 </div>)}
         </div>
