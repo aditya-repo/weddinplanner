@@ -1,4 +1,3 @@
-import Navigation from "@/ui/header/navigation";
 import FeaturedVendor from "@/ui/main-page/featured";
 import LatestBlog from "@/ui/main-page/latest-blog";
 import PopularSearch from "@/ui/main-page/pop-search";
@@ -13,8 +12,6 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div>
-
-      <Navigation />
       <div className="relative">
         <Image
           src="/delhi_bg.webp"

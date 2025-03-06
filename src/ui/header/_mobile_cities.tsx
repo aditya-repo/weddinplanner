@@ -66,7 +66,7 @@ const MobileCities: React.FC = () => {
         };
     
         search();
-    }, [searchedKeyword, allCities]);
+    }, [searchedKeyword]);
     
 
     return (

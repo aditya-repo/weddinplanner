@@ -16,15 +16,6 @@ const Carousel: React.FC<SwipeCarouselProps> = ({
     children
 }) => {
 
-
-    const childrenArray = Array.isArray(children) ? children : [children];
-
-    if (!children) {
-        return <div>Null</div>
-    }
-
-    const totalCard = childrenArray.length
-    
     const [currentIndex, setCurrentIndex] = useState(0);
     const [visibleCards, setVisibleCards] = useState(desktop);
 
@@ -37,8 +28,12 @@ const Carousel: React.FC<SwipeCarouselProps> = ({
         return () => window.removeEventListener("resize", updateCards);
     }, [desktop, mobile]);
 
+
+    const childrenArray = Array.isArray(children) ? children : [children];
+
+    const totalCard = childrenArray.length
+
     const totalSlides = Math.ceil(totalCard / visibleCards);
-    // const totalSlides = totalCard;
 
     const nextSlide = () => {
         setCurrentIndex((prev) => (prev + 1) % totalSlides);
