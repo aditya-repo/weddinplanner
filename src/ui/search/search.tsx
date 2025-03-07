@@ -31,7 +31,7 @@ interface Props {
         category: "Services",
         items: [
             { title: "Photographers", link: "/photographers" },
-            { title: "Pre Wedding Shoot Locations", link: "/pre-wedding-shoot-locations" },
+            { title: "Pre Wedding Locations", link: "/pre-wedding-shoot-locations" },
             { title: "Pre Wedding Photographers", link: "/pre-wedding-photographers" },
             { title: "Bridal Makeup", link: "/bridal-makeup" },
             { title: "Family Makeup", link: "/family-makeup" },
@@ -92,9 +92,20 @@ const SearchVendor: React.FC = () => {
 
 const SearchDropdown: React.FC<Props> = ({filteredCategories}) => {
 
+    if (filteredCategories.length === 0) {
+        return (
+            <div className="absolute w-full mt-[1px] z-100">
+                <div className="bg-white text-dark text-sm text-gray-600 py-4 px-3 md:px-5 rounded-2xl shadow-2xl border-2 border-main-dark">
+                    <p className="font-semibold text-main-darker text-center mb-1.5">No Match? Don&#39;t worry, just search it</p>
+                </div>
+            </div>
+        );
+        
+    }
+
     return (
         <div className="absolute w-full mt-[1px] z-100">
-            <div className="bg-white text-dark text-sm text-gray-600 py-4 px-5 rounded-2xl shadow-2xl border-2 border-main-dark">
+            <div className="bg-white text-dark text-xs md:text-sm text-gray-600 py-4 px-3 md:px-5 rounded-2xl shadow-2xl border-2 border-main-dark">
                 <div className="grid grid-cols-2 md:grid-cols-3">
                     {filteredCategories.map((category, index) => (
                         <div key={index} className="mb-3">

@@ -3,5 +3,5 @@ export default function VendorLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div className="mx-auto max-w-[1300px]">{children}</div>;
+  return <div className="bg-gray-50"><div className="mx-auto max-w-[1300px]">{children}</div></div>;
 }

@@ -1,6 +1,7 @@
 import VendorDisplayCard from "@/ui/reusable/vendor-card";
 import { faList } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 
 const VendorList: React.FC = () => {
   return (
@@ -39,12 +40,24 @@ const VendorList: React.FC = () => {
       </div>
       <div className="data-display pb-4 mb-5">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-          <VendorDisplayCard />
-          <VendorDisplayCard />
-          <VendorDisplayCard />
-          <VendorDisplayCard />
-          <VendorDisplayCard />
-          <VendorDisplayCard />
+          <Link href={'/vendors/1'}>
+            <VendorDisplayCard />
+          </Link>
+          <Link href={'/vendors/1'}>
+            <VendorDisplayCard />
+          </Link>
+          <Link href={'/vendors/1'}>
+            <VendorDisplayCard />
+          </Link>
+          <Link href={'/vendors/1'}>
+            <VendorDisplayCard />
+          </Link>
+          <Link href={'/vendors/1'}>
+            <VendorDisplayCard />
+          </Link>
+          <Link href={'/vendors/1'}>
+            <VendorDisplayCard />
+          </Link>
         </div>
       </div>
     </div>
