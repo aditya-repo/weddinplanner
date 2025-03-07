@@ -1,5 +1,4 @@
 import VendorDestopMain from "@/ui/vendors/desktop";
-import VendorLayout from "../layout";
 
 const VendorPage: React.FC = () => {
     return (
