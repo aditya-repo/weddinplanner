@@ -1,13 +1,13 @@
 "use client"
 
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons"
+import { faAngleDown, IconDefinition } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react"
 
 interface propsType {
     id: number,
     name: string,
-    icon: any
+    icon: IconDefinition
 }
 
 const DesktopFilter: React.FC<{ filterType: propsType[] }> = ({ filterType }) => {
