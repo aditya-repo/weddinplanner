@@ -1,88 +1,48 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import { useLayoutEffect, useState } from "react";
 
-interface SwipeCarouselProps {
-    desktop?: number;
-    mobile?: number;
-    children: React.ReactNode
+interface CarouselProps {
+  desktop?: number;
+  mobile?: number;
+  initialSize: number;
+  children: React.ReactNode;
 }
 
-const Carousel: React.FC<SwipeCarouselProps> = ({
-    desktop = 3,
-    mobile = 1,
-    children
-}) => {
+const Carousel: React.FC<CarouselProps> = ({ desktop = 2.5, mobile = 1.2, children, initialSize }) => {
+  const [emblaRef] = useEmblaCarousel({ align: "start" });
+  const [slidesToShow, setSlidesToShow] = useState<number>(initialSize); 
 
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [visibleCards, setVisibleCards] = useState(desktop);
+  useLayoutEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    setSlidesToShow(isMobile ? mobile : desktop);
 
-    useEffect(() => {
-        const updateCards = () => {
-            setVisibleCards(window.innerWidth <= 768 ? mobile : desktop);
-        };
-        updateCards();
-        window.addEventListener("resize", updateCards);
-        return () => window.removeEventListener("resize", updateCards);
-    }, [desktop, mobile]);
-
-
-    const childrenArray = Array.isArray(children) ? children : [children];
-
-    const totalCard = childrenArray.length
-
-    const totalSlides = Math.ceil(totalCard / visibleCards);
-
-    const nextSlide = () => {
-        setCurrentIndex((prev) => (prev + 1) % totalSlides);
+    const handleResize = () => {
+      setSlidesToShow(window.innerWidth < 768 ? mobile : desktop);
     };
 
-    const prevSlide = () => {
-        setCurrentIndex((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
-    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [desktop, mobile]);
 
+  const childrenArray = Array.isArray(children) ? children : [children];
 
-
-    return (
-        <div className="relative w-full mx-auto overflow-hidden px-3">
-            <button className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white shadow-lg rounded-full p-2 z-10" onClick={prevSlide}>
-                <ChevronLeft size={18} />
-            </button>
-
-            <div className="w-full flex justify-center overflow-hidden">
-                <motion.div
-                    className="flex gap-0"
-                    animate={{ x: `-${currentIndex * 100}%` }}
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    style={{
-                        width: `${totalSlides * 100}%`,
-                        display: "flex",
-                    }}
-                >
-                    {Array.from({ length: totalCard }).map((_, index) => (
-                        <div
-                            key={index}
-                            className="flex-shrink-0 px-1 overflow-hidden"
-                            style={{
-                                width: `calc(100% / ${visibleCards})`, 
-                            }}
-                        >
-                            {childrenArray[index % childrenArray.length]}
-                        </div>
-                    ))}
-                </motion.div>
-            </div>
-
-            <button
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white shadow-lg rounded-full p-2 z-10"
-                onClick={nextSlide}
-            >
-                <ChevronRight size={18} />
-            </button>
-        </div>
-    );
+  return (
+    <div ref={emblaRef} className="overflow-hidden w-full">
+      <div className="flex gap-3">
+        {childrenArray.map((child, index) => (
+          <div
+            key={index}
+            className="shrink-0 "
+            style={{ flex: `0 0 ${100 / slidesToShow}%` }}
+          >
+            {child}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Carousel;

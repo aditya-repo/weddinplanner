@@ -3,7 +3,7 @@ import Link from "next/link"
 
  const FeaturedVendor: React.FC = ()=>{
     return(
-        <div className="shadow my-2 rounded-lg flex flex-col md:p-1">
+        <div className="shadow my-2 border border-gray-200 rounded-lg flex flex-col md:p-1">
             <div className=""><Image src={"/vendor.webp"} alt="Delhi Card" width={400} height={200} className="rounded-lg p-1" /></div>
             <div className="ps-3 py-1.5 pt-1">
                 <Link href={'/jkd'} className=" text-left">

@@ -22,7 +22,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={roboto.className}>
       <body
-        // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navigation />
         {children}

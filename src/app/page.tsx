@@ -3,13 +3,20 @@ import LatestBlog from "@/ui/main-page/latest-blog";
 import PopularSearch from "@/ui/main-page/pop-search";
 import VenueSearch from "@/ui/main-page/venue-search";
 import Carousel from "@/ui/reusable/carousel";
+import VendorCatalog from "@/ui/reusable/vendor-catalog";
 import SearchBarDesktop from "@/ui/search/desktop";
+import isMobileDevice from "@/util/isMobileScreen";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+  const isMobile = isMobileDevice();
+  const venuecount = await isMobile ? 1.1 : 2.6
+  const popcount = await isMobile ? 2.2 : 4.3
+  const featurecount = await isMobile ? 1.2 : 3.2
+  const blogcount = await isMobile ? 1.2 : 3.2
   return (
     <div>
       <div className="relative">
@@ -25,18 +32,20 @@ export default function Home() {
         </div>
       </div>
       <div className="md:mx-auto ml-0  mt-5 max-w-[1300px]">
-        <div>
-          <h4 className="px-4 text-lg text-main-dark font-semibold">Popular Venue Searches</h4>
-          <Carousel desktop={3} mobile={1}>
+        <div className="px-4">
+          <h4 className="text-lg  text-main-dark font-semibold">Popular Venue Searches</h4>
+          <Carousel desktop={2.6} mobile={1.1} initialSize={venuecount} >
+            <VenueSearch />
             <VenueSearch />
             <VenueSearch />
             <VenueSearch />
             <VenueSearch />
           </Carousel>
         </div>
-        <div className="mt-5">
-          <h4 className="px-4 text-lg text-main-dark font-semibold">Popular Searches</h4>
-          <Carousel desktop={4} mobile={2}>
+        <div className="mt-5 px-4">
+          <h4 className="text-lg text-main-dark font-semibold">Popular Searches</h4>
+          <Carousel desktop={4.3} mobile={1.6} initialSize={popcount}>
+            <PopularSearch />
             <PopularSearch />
             <PopularSearch />
             <PopularSearch />
@@ -45,29 +54,16 @@ export default function Home() {
         </div>
 
         <div className="px-4 my-4">
-          <div className="flex justify-between items-center">
-            <h4 className="text-lg mb-3 text-main-dark font-semibold">Popular Searches</h4>
+          <div className="flex justify-between items-center mb-3">
+            <h4 className="text-lg text-main-dark font-semibold">Popular Searches</h4>
             <Link className="text-main-dark" href={"nklsd"}>View all Categories <FontAwesomeIcon icon={faAngleRight} className="h-4" /></Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="rounded-lg border border-gray-200 shadow px-5 py-5 text-center">
-              Venues
-            </div>
-            <div className="rounded-lg border border-gray-200 shadow px-5 py-5 text-center">
-              Vendor
-            </div>
-            <div className="rounded-lg border border-gray-200 shadow px-5 py-5 text-center">
-              Vendor
-            </div>
-            <div className="rounded-lg border border-gray-200 shadow px-5 py-5 text-center">
-              Vendor
-            </div>
-          </div>
+          <VendorCatalog />
         </div>
 
-        <div className="mt-5">
-          <h4 className="px-4 text-lg text-main-dark font-semibold">Featured Vendors</h4>
-          <Carousel desktop={4} mobile={2}>
+        <div className="mt-5 px-4">
+          <h4 className="pl-1 text-lg text-main-dark font-semibold">Featured Vendors</h4>
+          <Carousel desktop={3.5} mobile={1.5} initialSize={featurecount}>
             <FeaturedVendor />
             <FeaturedVendor />
             <FeaturedVendor />
@@ -75,9 +71,9 @@ export default function Home() {
           </Carousel>
         </div>
 
-        <div className="mt-5 mb-20">
-          <h4 className="px-4 text-lg text-main-dark font-semibold">Latest Blogs</h4>
-          <Carousel desktop={3} mobile={1}>
+        <div className="mt-5 mb-20 px-4">
+          <h4 className="text-lg text-main-dark font-semibold">Latest Blogs</h4>
+          <Carousel desktop={3} mobile={1.2} initialSize={blogcount}>
             <LatestBlog />
             <LatestBlog />
             <LatestBlog />

@@ -1,11 +1,11 @@
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faInfoCircle, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 
 const VendorDisplayCard: React.FC = () => {
   return (
-    <div className="hover:shadow rounded-lg p-3 mb-3">
-      <div className="image">
+    <div className="hover:shadow md:rounded-xl p-3 bg-white">
+      <div className="image relative">
         <Image
           src={"/vendor.webp"}
           height={200}
@@ -13,6 +13,7 @@ const VendorDisplayCard: React.FC = () => {
           alt="Vendor Name"
           className="rounded-lg w-full"
         />
+        <div className="absolute bottom-2 right-2 text-white text-xs bg-white rounded-sm py-0.5 px-1"><FontAwesomeIcon icon={faInfoCircle} className="text-gray-400" /></div>
       </div>
       <div className="info-panel">
         <div className="flex justify-between items-center pt-2 text-gray-600">

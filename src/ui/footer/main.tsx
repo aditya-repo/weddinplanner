@@ -68,12 +68,12 @@ const menuCategories = [
 const Footer: React.FC = () => {
     return (
         <div>
-            <div className="bg-gray-100 py-10">
+            <div className="bg-gray-200 pt-10">
                 <div className="mx-auto md:w-[1300px] px-6">
                     <FooterCompanyInfo />
                 </div>
             </div>
-            <div className="bg-gray-100 py-10">
+            <div className="bg-gray-200 py-10">
                 <div className="mx-auto md:w-[1300px] grid grid-cols-2 md:grid-cols-5 gap-4 px-6">
                     {menuCategories.map((menu) => (
                         <div key={menu.category}>
@@ -81,7 +81,7 @@ const Footer: React.FC = () => {
                             <ul className="space-y-2">
                                 {menu.items.map((list) => (
                                     <li key={list.title}>
-                                        <Link href={list.href} className="text-gray-600 hover:text-main-dark hover:underline">
+                                        <Link href={list.href} className="text-gray-600 text-sm md:text-md hover:text-main-dark hover:underline">
                                             {list.title}
                                         </Link>
                                     </li>
@@ -91,7 +91,7 @@ const Footer: React.FC = () => {
                     ))}
                 </div>
             </div>
-            <div className="bg-gray-100 py-4 border-t border-gray-300 text-sm text-gray-600">
+            <div className="bg-gray-200 py-4 border-t border-gray-300 text-sm text-gray-600">
                 <div className="mx-auto md:w-[1300px] flex justify-between items-center">
                     <div className="flex gap-3">
                         <div>© 2025</div>
@@ -110,11 +110,11 @@ const Footer: React.FC = () => {
 
 const FooterCompanyInfo: React.FC = () => {
     return (
-        <div className="md:flex gap-6 border-b border-gray-300 pb-10 pt-4">
+        <div className="md:flex gap-6 border-b border-gray-300 pb-4 pt-4">
             <div className="basis-6/12 mb-6">
-                <h3 className="font-semibold text-main-darker mb-3">WeddinPlanner - Your Personal Wedding Planner</h3>
+                <h3 className="font-semibold text-main-darker mb-3"><span className="text-2xl">WeddinPlanner</span> - Your Personal Wedding Planner</h3>
                 <p className="text-gray-700 mb-2">Plan your wedding with Us</p>
-                <p className="text-gray-600">Get best quote from Radisson Blu Hotel New Delhi Paschim Vihar and book your date! Send enquiry to your selected list of Wedding Venues at WedMeGood and choose the best. Browse for more Wedding Venues in West Delhi, Delhi NCR and more wedding vendors in Delhi NCR at WedMeGood and plan your wedding hassle free.</p>
+                <p className="text-gray-600 md:text-md text-sm text-justify">Get best quote from Radisson Blu Hotel New Delhi Paschim Vihar and book your date! Send enquiry to your selected list of Wedding Venues at WedMeGood and choose the best. Browse for more Wedding Venues in West Delhi, Delhi NCR and more wedding vendors in Delhi NCR at WedMeGood and plan your wedding hassle free.</p>
             </div>
             <div className="basis-4/12 mb-6">
                     <h3 className="font-semibold text-gray-800 mb-3">Registered Address</h3>

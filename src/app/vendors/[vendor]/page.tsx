@@ -2,7 +2,7 @@ import VendorDestopMain from "@/ui/vendors/desktop";
 
 const VendorPage: React.FC = () => {
     return (
-       <div className="bg-gray-50"><VendorDestopMain /></div>
+       <div className="bg-gray-100"><VendorDestopMain /></div>
     ); 
 }
 
