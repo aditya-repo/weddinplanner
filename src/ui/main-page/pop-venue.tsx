@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
-const VenueSearch : React.FC = ()=>{
+const PopVenue : React.FC = ()=>{
     return(
         <div className="shadow my-4 border border-gray-200 rounded-lg flex items-center p-2">
             <div className="basis-5/12"><Image src={"/delhi_bg.webp"} alt="Delhi Card" width={400} height={200} className="rounded-lg" /></div>
@@ -19,4 +19,4 @@ const VenueSearch : React.FC = ()=>{
     )
 }
 
-export default VenueSearch
+export default PopVenue

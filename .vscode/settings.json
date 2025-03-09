@@ -22,11 +22,11 @@
         "src/lib": true,
         "src/app/favicon.ico": true,
         "src/app/layout.tsx": true,
-        "src/app/page.tsx": true,
+        // "src/app/page.tsx": true,
         "src/app/globals.css": true,
         "src/style": true,
         "src/util": true,
-        "src/ui/header": true,
+        // "src/ui/header": true,
         "src/ui/footer": true,
         "src/ui/search": true,
     }

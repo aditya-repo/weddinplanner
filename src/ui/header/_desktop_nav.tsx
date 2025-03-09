@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { link } from "fs";
 
 // Define interface for props
 interface MenuItemProps {
@@ -12,25 +13,30 @@ interface MenuItemProps {
 const Navbar = () => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
-  const menuItems: { name: string; props: MenuItemProps }[] = [
+  const menuItems: { name: string;link: string; props: MenuItemProps }[] = [
     {
       name: "Venues",
+      link: "venues",
       props: { type: "Venue", description: "Find the best venues" },
     },
     {
       name: "Vendors",
+      link: "vendors",
       props: { type: "Vendor", description: "Top-rated vendors" },
     },
     {
       name: "Photos",
+      link: "photo-gallery",
       props: { type: "Photo", description: "Inspiration gallery" },
     },
     {
       name: "Blogs",
+      link: "wedding-blog",
       props: { type: "Blog", description: "Latest trends & tips" },
     },
     {
       name: "E-invites",
+      link: "e-invites",
       props: { type: "Invite", description: "Digital invitations" },
     },
   ];
@@ -45,7 +51,7 @@ const Navbar = () => {
             onMouseEnter={() => setHoveredItem(item.name)}
             onMouseLeave={() => setHoveredItem(null)}
           >
-            <Link href={`/${item.name.trim().toLowerCase()}`} title={item.name}>
+            <Link href={`/${item.link.trim().toLowerCase()}`} title={item.name}>
               {item.name}
             </Link>
 
