@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { link } from "fs";
 
 // Define interface for props
 interface MenuItemProps {
