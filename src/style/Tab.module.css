@@ -1,0 +1,25 @@
+
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .tabLink {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    color: black;
+    transition: background 0.3s;
+  }
+  
+  .active {
+    background-color: #0070f3;
+    color: white;
+  }
+  .tabContent {
+    padding: 20px;
+    border: 1px solid #ddd;
+  }
+  
